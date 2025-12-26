@@ -86,7 +86,6 @@ function AppContent() {
                   maturityValue={result.totalAmount}
                   totalInterest={result.totalInterest}
                 />
-
                 <Charts
                   data={result.projection}
                   totalInvestment={result.cumulativeInvestment}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
     AreaChart,
     Area,
@@ -24,28 +24,7 @@ interface ChartsProps {
 
 const Charts: React.FC<ChartsProps> = ({ data, totalInvestment, totalInterest }) => {
     const { theme } = useTheme();
-    const [isDark, setIsDark] = useState(false);
-
-    useEffect(() => {
-        const checkSystemDate = () => {
-            if (theme === 'system') {
-                return window.matchMedia('(prefers-color-scheme: dark)').matches;
-            }
-            return theme === 'dark';
-        };
-
-        setIsDark(checkSystemDate());
-
-        // Listener for system changes if theme is system
-        if (theme === 'system') {
-            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            const handleChange = (e: MediaQueryListEvent) => {
-                setIsDark(e.matches);
-            };
-            mediaQuery.addEventListener('change', handleChange);
-            return () => mediaQuery.removeEventListener('change', handleChange);
-        }
-    }, [theme]);
+    const isDark = theme === 'dark';
 
     const pieData = [
         { name: 'Total Invested', value: totalInvestment },
@@ -56,7 +35,7 @@ const Charts: React.FC<ChartsProps> = ({ data, totalInvestment, totalInterest })
 
     // Chart colors based on theme
     const gridColor = isDark ? '#374151' : '#f0f0f0';
-    const axisColor = isDark ? '#9ca3af' : '#9ca3af';
+    const axisColor = isDark ? '#9ca3af' : '#acaf9cff';
     const tooltipContentStyle = {
         borderRadius: '8px',
         border: isDark ? '1px solid #374151' : 'none',
