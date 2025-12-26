@@ -1,4 +1,8 @@
-# PPF Projection Calculator
+<h1>
+  <img src="src/assets/ppf_logo.png" alt="PPF Logo" height="50" align="left" style="margin-right: 10px;">
+  PPF Projection Calculator
+</h1>
+<br clear="left"/>
 
 A modern, responsive web application designed to help users calculate and visualize their Public Provident Fund (PPF) investments over time. This tool provides detailed projections of interest accumulation and maturity values based on current interest rates.
 
@@ -58,8 +62,16 @@ Follow these steps to run the project locally on your machine:
     ```
 
 2.  **Install dependencies:**
+    
+    You can install all required packages using `npm install`, which reads from the `package.json` file.
     ```bash
     npm install
+    ```
+    
+    Alternatively, if you want to install the main packages manually:
+    ```bash
+    npm install react react-dom lucide-react recharts react-is
+    npm install -D tailwindcss postcss autoprefixer
     ```
 
 3.  **Run the development server:**
