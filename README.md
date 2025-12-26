@@ -8,7 +8,7 @@ A modern, responsive web application designed to help users calculate and visual
 
 ![Overall Webpage Dark Mode](screenshots/overall_webpage.png)
 
-🔗 **Live Demo:** [https://herdev-projects.web.app/](https://herdev-projects.web.app/)
+🔗 **Live Demo:** <a href="https://herdev-projects.web.app/" target="_blank" rel="noopener noreferrer">https://herdev-projects.web.app/</a>
 
 ## 🚀 Features
 
