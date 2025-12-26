@@ -1,4 +1,1 @@
-npm install recharts lucide-react
-npm install react-is
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+recharts lucide-react react-is tailwindcss postcss autoprefixer
