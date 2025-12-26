@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+# PPF Projection Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive web application designed to help users calculate and visualize their Public Provident Fund (PPF) investments over time. This tool provides detailed projections of interest accumulation and maturity values based on current interest rates.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [https://herdev-projects.web.app/](https://herdev-projects.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+-   **Investment Projection:** Calculate maturity value based on annual investment, interest rate, and duration.
+-   **Visual Charts:** Interactive Area and Pie charts to visualize "Total Invested" vs "Interest Earned".
+-   **Detailed Breakdown:** Toggle between yearly and monthly views of your investment growth.
+-   **Theme Support:** Fully supports Light and Dark modes with a custom toggle.
+-   **Responsive Design:** Optimized for both desktop and mobile devices.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+This project is built using the following technologies:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **Frontend:** [React](https://react.dev/) (with TypeScript)
+-   **Build Tool:** [Vite](https://vitejs.dev/)
+-   **Styling:** [Tailwind CSS](https://tailwindcss.com/) (PostCSS)
+-   **Visualization:** [Recharts](https://recharts.org/) (for interactive graphs)
+-   **Icons:** [Lucide React](https://lucide.dev/)
+-   **Deployment:** [Firebase Hosting](https://firebase.google.com/products/hosting)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 💻 Installation & Local Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Follow these steps to run the project locally on your machine:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/AnisHerdev/ppf-projection-calculator-react.git
+    cd ppf-projection-calculator-react
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4.  **Open in Browser:**
+    The application will be running at `http://localhost:5173` (or the port shown in your terminal).
+
+## 📄 License
+
+This project is open source and available for personal and educational use.

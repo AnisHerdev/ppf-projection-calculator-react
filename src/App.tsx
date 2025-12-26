@@ -41,7 +41,7 @@ function AppContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-1 bg-gray-600 rounded-ss text-white">
-              <img src="ppf_logo.png" alt="PPF Logo" className="w-9 h-9 rounded-ss" />
+              <img src="/ppf_logo.png" alt="PPF Logo" className="w-9 h-9 rounded-ss" />
             </div>
             <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">PPF Calculator</h1>
           </div>
