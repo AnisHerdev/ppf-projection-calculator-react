@@ -1,5 +1,5 @@
 <h1>
-  <img src="src/assets/ppf_logo.png" alt="PPF Logo" height="50" align="left" style="margin-right: 10px;">
+  <img src="public/ppf_logo.png" alt="PPF Logo" height="50" align="left" style="margin-right: 10px;">
   PPF Projection Calculator
 </h1>
 <br clear="left"/>
