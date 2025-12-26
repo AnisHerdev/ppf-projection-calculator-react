@@ -6,7 +6,6 @@ import SummaryCards from './components/SummaryCards';
 import ProjectionTable from './components/ProjectionTable';
 import Charts from './components/Charts';
 import InfoSection from './components/InfoSection';
-import { Calculator } from 'lucide-react';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeToggle } from './components/ThemeToggle';
 
@@ -43,7 +42,6 @@ function AppContent() {
           <div className="flex items-center gap-3">
             <div className="p-1 bg-gray-600 rounded-ss text-white">
               <img src="ppf_logo.png" alt="PPF Logo" className="w-9 h-9 rounded-ss" />
-              {/* <Calculator size={24} /> */}
             </div>
             <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">PPF Calculator</h1>
           </div>
