@@ -8,6 +8,7 @@ import Charts from './components/Charts';
 import InfoSection from './components/InfoSection';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeToggle } from './components/ThemeToggle';
+import Footer from './components/Footer';
 
 function AppContent() {
   // State for inputs
@@ -35,7 +36,7 @@ function AppContent() {
   }, [ppfAmount, frequency, investmentAmount, rateOfInterest, duration]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100 pb-12 transition-colors duration-200">
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100 pb-0 transition-colors duration-200">
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -100,7 +101,8 @@ function AppContent() {
           </div>
         </div>
       </main>
-    </div>
+      <Footer />
+    </div >
   );
 }
 
