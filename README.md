@@ -2,6 +2,8 @@
 
 A modern, responsive web application designed to help users calculate and visualize their Public Provident Fund (PPF) investments over time. This tool provides detailed projections of interest accumulation and maturity values based on current interest rates.
 
+![Overall Webpage Dark Mode](screenshots/overall_webpage.png)
+
 🔗 **Live Demo:** [https://herdev-projects.web.app/](https://herdev-projects.web.app/)
 
 ## 🚀 Features
@@ -11,6 +13,28 @@ A modern, responsive web application designed to help users calculate and visual
 -   **Detailed Breakdown:** Toggle between yearly and monthly views of your investment growth.
 -   **Theme Support:** Fully supports Light and Dark modes with a custom toggle.
 -   **Responsive Design:** Optimized for both desktop and mobile devices.
+
+## 📈 Visualizing Compounding Growth
+
+Experience the power of compounding visually. The interactive charts allow you to track how your money grows over the tenure.
+
+![Growth Over Time Graph](screenshots/growth_over_time_graph.png)
+
+> **The Power of Compounding:** The graph above shows the growth of your money with the invested amount (Blue) and the interest accumulated (Orange) over the years. Notice the point where the accumulated interest surpasses the invested amount—that effectively means you have earned more money through interest than what you have actually invested!
+
+## 📊 Detailed Projections
+
+Get a granular view of your investment with our detailed projection tables.
+
+### Yearly Breakdown
+A comprehensive year-by-year summary of your investment's progress.
+
+![Yearly Projection Table](screenshots/projection_table_yearly.png)
+
+### Monthly Breakdown
+Drill down into the monthly details to see exactly how interest is calculated. The table highlights that interest is credited to your account on **March 31st** of every financial year.
+
+![Monthly Projection Table](screenshots/projection_table_monthly.png)
 
 ## 🛠️ Tech Stack
 
