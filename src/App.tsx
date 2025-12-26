@@ -41,8 +41,9 @@ function AppContent() {
       <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-600 rounded-lg text-white">
-              <Calculator size={24} />
+            <div className="p-1 bg-gray-600 rounded-ss text-white">
+              <img src="ppf_logo.png" alt="PPF Logo" className="w-9 h-9 rounded-ss" />
+              {/* <Calculator size={24} /> */}
             </div>
             <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">PPF Calculator</h1>
           </div>
