@@ -7,8 +7,10 @@ import ProjectionTable from './components/ProjectionTable';
 import Charts from './components/Charts';
 import InfoSection from './components/InfoSection';
 import { Calculator } from 'lucide-react';
+import { ThemeProvider } from './context/ThemeContext';
+import { ThemeToggle } from './components/ThemeToggle';
 
-function App() {
+function AppContent() {
   // State for inputs
   const [ppfAmount, setPpfAmount] = useState<number>(100000);
   const [frequency, setFrequency] = useState<InvestmentFrequency>('Monthly');
@@ -33,18 +35,18 @@ function App() {
     }
   }, [ppfAmount, frequency, investmentAmount, rateOfInterest, duration]);
 
-  // return (<div><p>App Component Is Rendering! </p>
-  // <h1 className="text-xl font-bold text-gray-900 tracking-tight">PPF Projection Calculator</h1></div>);
-
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-900 pb-12">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100 pb-12 transition-colors duration-200">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-3">
-          <div className="p-2 bg-blue-600 rounded-lg text-white">
-            <Calculator size={24} />
+      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-blue-600 rounded-lg text-white">
+              <Calculator size={24} />
+            </div>
+            <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">PPF Calculator</h1>
           </div>
-          <h1 className="text-xl font-bold text-gray-900 tracking-tight">PPF Projection Calculator</h1>
+          <ThemeToggle />
         </div>
       </header>
 
@@ -52,9 +54,9 @@ function App() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left Sidebar - Inputs */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="p-4 bg-gray-50 border-b border-gray-100">
-                <h2 className="font-semibold text-gray-800">Configuration</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors duration-200">
+              <div className="p-4 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-700">
+                <h2 className="font-semibold text-gray-800 dark:text-gray-200">Configuration</h2>
               </div>
               <InputForm
                 ppfAmount={ppfAmount}
@@ -101,6 +103,14 @@ function App() {
         </div>
       </main>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

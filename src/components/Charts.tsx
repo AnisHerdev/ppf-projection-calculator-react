@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     AreaChart,
     Area,
@@ -14,6 +14,7 @@ import {
 } from 'recharts';
 import type { ProjectionRow } from '../types';
 import { formatIndianCurrency } from '../utils/calculator';
+import { useTheme } from '../context/ThemeContext';
 
 interface ChartsProps {
     data: ProjectionRow[];
@@ -22,6 +23,30 @@ interface ChartsProps {
 }
 
 const Charts: React.FC<ChartsProps> = ({ data, totalInvestment, totalInterest }) => {
+    const { theme } = useTheme();
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+        const checkSystemDate = () => {
+            if (theme === 'system') {
+                return window.matchMedia('(prefers-color-scheme: dark)').matches;
+            }
+            return theme === 'dark';
+        };
+
+        setIsDark(checkSystemDate());
+
+        // Listener for system changes if theme is system
+        if (theme === 'system') {
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            const handleChange = (e: MediaQueryListEvent) => {
+                setIsDark(e.matches);
+            };
+            mediaQuery.addEventListener('change', handleChange);
+            return () => mediaQuery.removeEventListener('change', handleChange);
+        }
+    }, [theme]);
+
     const pieData = [
         { name: 'Total Invested', value: totalInvestment },
         { name: 'Total Interest', value: totalInterest },
@@ -29,11 +54,22 @@ const Charts: React.FC<ChartsProps> = ({ data, totalInvestment, totalInterest })
 
     const COLORS = ['#3b82f6', '#f97316']; // Blue-500, Orange-500
 
+    // Chart colors based on theme
+    const gridColor = isDark ? '#374151' : '#f0f0f0';
+    const axisColor = isDark ? '#9ca3af' : '#9ca3af';
+    const tooltipContentStyle = {
+        borderRadius: '8px',
+        border: isDark ? '1px solid #374151' : 'none',
+        boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+        backgroundColor: isDark ? '#1f2937' : '#fff',
+        color: isDark ? '#fff' : '#000'
+    };
+
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 transition-colors duration-200">
             {/* Area Chart */}
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h3 className="text-lg font-semibold text-gray-800 mb-6">Growth of Investment Over Time</h3>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-6">Growth of Investment Over Time</h3>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
                         <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -47,22 +83,23 @@ const Charts: React.FC<ChartsProps> = ({ data, totalInvestment, totalInterest })
                                     <stop offset="95%" stopColor="#eef916ff" stopOpacity={0} />
                                 </linearGradient>
                             </defs>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={gridColor} />
                             <XAxis
                                 dataKey="Month"
                                 tickFormatter={(value) => (value % 12 === 0 ? `${value / 12}Y` : '')}
-                                stroke="#9ca3af"
-                                tick={{ fontSize: 12 }}
+                                stroke={axisColor}
+                                tick={{ fontSize: 12, fill: axisColor }}
                             />
                             <YAxis
                                 tickFormatter={(value) => `₹${(value / 100000).toFixed(1)}L`}
-                                stroke="#9ca3af"
-                                tick={{ fontSize: 12 }}
+                                stroke={axisColor}
+                                tick={{ fontSize: 12, fill: axisColor }}
                             />
                             <Tooltip
                                 formatter={(value: number) => formatIndianCurrency(value)}
                                 labelFormatter={(label) => `Month ${label}`}
-                                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                                contentStyle={tooltipContentStyle}
+                                itemStyle={{ color: isDark ? '#fff' : undefined }}
                             />
                             <Area
                                 type="monotone"
@@ -81,15 +118,15 @@ const Charts: React.FC<ChartsProps> = ({ data, totalInvestment, totalInterest })
                                 fill="url(#colorInterest)"
                                 strokeWidth={2}
                             />
-                            <Legend verticalAlign="top" height={36} />
+                            <Legend verticalAlign="top" height={36} wrapperStyle={{ paddingTop: '10px' }} />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
             </div>
 
             {/* Pie Chart */}
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h3 className="text-lg font-semibold text-gray-800 mb-6">Maturity Breakdown</h3>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-6">Maturity Breakdown</h3>
                 <div className="h-[300px] flex items-center justify-center">
                     <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
@@ -107,7 +144,11 @@ const Charts: React.FC<ChartsProps> = ({ data, totalInvestment, totalInterest })
                                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                 ))}
                             </Pie>
-                            <Tooltip formatter={(value: number) => formatIndianCurrency(value)} />
+                            <Tooltip
+                                formatter={(value: number) => formatIndianCurrency(value)}
+                                contentStyle={tooltipContentStyle}
+                                itemStyle={{ color: isDark ? '#fff' : undefined }}
+                            />
                             <Legend verticalAlign="bottom" height={36} />
                         </PieChart>
                     </ResponsiveContainer>
