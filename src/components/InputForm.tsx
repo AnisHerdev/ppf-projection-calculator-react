@@ -103,7 +103,7 @@ const InputForm: React.FC<InputFormProps> = ({
                             Note: Maximum investment in PPF is ₹1.5 Lakhs per year.
                         </p>
                     )}
-                    <p className="text-gray-500 dark:text-gray-400 text-xs mt-1">
+                    <p className="text-red-500 dark:text-red-400 text-xs mt-1">
                         {isMonthly
                             ? 'Note: This calculation assumes investment is made before the 5th of every month.'
                             : 'Note: This calculation assumes investment is made before the 5th of April every year.'}
@@ -146,6 +146,7 @@ const InputForm: React.FC<InputFormProps> = ({
                             }`}
                         min={15}
                         max={100}
+                        step={5}
                     />
                     {duration < 15 && (
                         <p className="text-red-500 dark:text-red-400 text-xs mt-1">Duration should be a minimum of 15 years</p>
