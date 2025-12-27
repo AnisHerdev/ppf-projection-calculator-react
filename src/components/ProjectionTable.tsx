@@ -8,10 +8,11 @@ interface ProjectionTableProps {
 
 const ProjectionTable: React.FC<ProjectionTableProps> = ({ data }) => {
     const [view, setView] = useState<'Monthly' | 'Yearly'>('Yearly');
-
+    const currentYear = 2026;//new Date().getFullYear();
+    const monthsNames = ["April","May","June","July","August","September","October","November","December","January","February","March"];
     const displayData = view === 'Yearly'
-        ? data.filter(row => row.Month % 12 === 0).map(row => ({ ...row, Year: row.Month / 12 }))
-        : data;
+        ? data.filter(row => row.Month % 12 === 0).map(row => ({ ...row, Year: currentYear+Math.floor((row.Month+2)/12) }))
+        : data.map(row=>({...row,Month:(currentYear +Math.floor((row.Month+2)/12))+" - "+monthsNames[(row.Month-1)%12]}));
 
     return (
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors duration-200">
@@ -39,11 +40,11 @@ const ProjectionTable: React.FC<ProjectionTableProps> = ({ data }) => {
                 <table className="w-full text-sm text-left">
                     <thead className="text-xs text-gray-500 dark:text-gray-400 uppercase bg-gray-50 dark:bg-gray-900/50 sticky top-0 z-10 transition-colors duration-200">
                         <tr>
-                            <th className="px-6 py-3">{view === 'Yearly' ? 'Year' : 'Month'}</th>
+                            <th className="px-6 py-3">{view === 'Yearly' ? 'Year' : 'Month & Year'}</th>
                             <th className="px-6 py-3">Invested Amount</th>
                             <th className="px-6 py-3">Interest Earned</th>
-                            <th className="px-6 py-3">Total Interest</th>
-                            <th className="px-6 py-3">Balance</th>
+                            <th className="px-6 py-3">Interest Credited</th>
+                            <th className="px-6 py-3">Total Balance</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
