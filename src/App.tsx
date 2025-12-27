@@ -23,7 +23,7 @@ function AppContent() {
   // Calculate on mount and when inputs change
   useEffect(() => {
     // Basic validation before calculating
-    if (duration >= 15) {
+    if (duration >= 0) {
       const res = calculatePPF(
         ppfAmount,
         rateOfInterest,
