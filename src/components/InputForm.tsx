@@ -47,7 +47,7 @@ const InputForm: React.FC<InputFormProps> = ({
                         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">₹</span>
                         <input
                             type="number"
-                            value={ppfAmount}
+                            value={ppfAmount?ppfAmount:""}
                             onChange={(e) => setPpfAmount(Number(e.target.value))}
                             className="w-full pl-8 pr-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500"
                             min={0}
@@ -91,7 +91,7 @@ const InputForm: React.FC<InputFormProps> = ({
                         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">₹</span>
                         <input
                             type="number"
-                            value={investmentAmount}
+                            value={investmentAmount?investmentAmount:""}
                             onChange={(e) => setInvestmentAmount(Number(e.target.value))}
                             className={`w-full pl-8 pr-4 py-2 border rounded-lg outline-none transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${isOverLimit ? 'border-red-300 dark:border-red-500 focus:ring-red-200 dark:focus:ring-red-900/50' : 'border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
                                 }`}
@@ -122,7 +122,7 @@ const InputForm: React.FC<InputFormProps> = ({
                     </label>
                     <input
                         type="number"
-                        value={rateOfInterest}
+                        value={rateOfInterest?rateOfInterest:""}
                         onChange={(e) => setRateOfInterest(Number(e.target.value))}
                         className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                         step={0.1}
