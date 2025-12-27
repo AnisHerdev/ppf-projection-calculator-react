@@ -8,11 +8,11 @@ interface ProjectionTableProps {
 
 const ProjectionTable: React.FC<ProjectionTableProps> = ({ data }) => {
     const [view, setView] = useState<'Monthly' | 'Yearly'>('Yearly');
-    const currentYear = 2026;//new Date().getFullYear();
-    const monthsNames = ["April","May","June","July","August","September","October","November","December","January","February","March"];
+    const currentYear = new Date().getFullYear();
+    const monthsNames = ["April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February", "March"];
     const displayData = view === 'Yearly'
-        ? data.filter(row => row.Month % 12 === 0).map(row => ({ ...row, Year: currentYear+Math.floor((row.Month+2)/12) }))
-        : data.map(row=>({...row,Month:(currentYear +Math.floor((row.Month+2)/12))+" - "+monthsNames[(row.Month-1)%12]}));
+        ? data.filter(row => row.Month % 12 === 0).map(row => ({ ...row, Year: currentYear + Math.floor((row.Month + 2) / 12) }))
+        : data.map(row => ({ ...row, Month: (currentYear + Math.floor((row.Month + 2) / 12)) + " - " + monthsNames[(row.Month - 1) % 12] }));
 
     return (
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors duration-200">
@@ -61,6 +61,11 @@ const ProjectionTable: React.FC<ProjectionTableProps> = ({ data }) => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            <div className="p-4 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/30">
+                <p className="text-xs text-gray-500 dark:text-gray-400 italic">
+                    * This projection assumes the investment is made before the 5th of April {new Date().getFullYear()}.
+                </p>
             </div>
         </div>
     );
